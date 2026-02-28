@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Nitesh Kumar | Staff Software Engineer</title>
+<meta name="description" content="Staff Software Engineer with 9+ years building scalable systems. Expert in Node.js, GraphQL, TypeScript, AWS, React.js, and microservices architecture."/>
+<meta property="og:title" content="Nitesh Kumar | Staff Software Engineer"/>
+<meta property="og:description" content="9+ years building scalable, high-availability systems serving 50K+ RPM"/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
+  --text:#e4e4e7;--text-muted:#9ca3af;--text-dim:#6b7280;
+  --accent:#6366f1;--accent-light:#818cf8;--accent-glow:rgba(99,102,241,.15);
+  --green:#10b981;--orange:#f59e0b;--pink:#ec4899;--cyan:#06b6d4;
+  --border:rgba(255,255,255,.06);--card-bg:rgba(255,255,255,.03);
+  --radius:16px;--font:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+a{color:var(--accent-light);text-decoration:none;transition:color .2s}
+a:hover{color:#a5b4fc}
+
+/* ===== ANIMATED GRID BACKGROUND ===== */
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.bg-glow{position:fixed;z-index:0;pointer-events:none;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,var(--accent-glow),transparent 70%);
+  top:-200px;right:-200px;animation:float 8s ease-in-out infinite;
+}
+.bg-glow-2{position:fixed;z-index:0;pointer-events:none;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(6,182,212,.08),transparent 70%);
+  bottom:-150px;left:-150px;animation:float 10s ease-in-out infinite reverse;
+}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,30px)}}
+
+/* ===== LAYOUT ===== */
+.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{padding:100px 0}
+@media(max-width:768px){section{padding:60px 0}.container{padding:0 16px}}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,10,15,.7);border-bottom:1px solid var(--border);
+  transition:transform .3s}
+nav.hidden{transform:translateY(-100%)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-weight:800;font-size:1.25rem;
+  background:linear-gradient(135deg,var(--accent-light),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text-muted);font-size:.875rem;font-weight:500;
+  transition:color .2s;position:relative}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;
+  height:2px;background:var(--accent);border-radius:1px;transition:width .3s}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-toggle{display:none;background:none;border:none;color:var(--text);
+  font-size:1.5rem;cursor:pointer;padding:4px}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:64px;left:0;right:0;
+    background:rgba(10,10,15,.95);backdrop-filter:blur(20px);
+    flex-direction:column;gap:0;padding:8px 0;
+    border-bottom:1px solid var(--border);
+    transform:translateY(-120%);transition:transform .3s;pointer-events:none}
+  .nav-links.open{transform:translateY(0);pointer-events:all}
+  .nav-links a{padding:16px 24px;display:block}
+  .nav-toggle{display:block}
+}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:64px}
+.hero-content{max-width:800px}
+.hero-label{display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border-radius:100px;
+  background:var(--accent-glow);border:1px solid rgba(99,102,241,.2);
+  color:var(--accent-light);font-size:.8rem;font-weight:600;
+  letter-spacing:.5px;margin-bottom:24px}
+.hero-label .dot{width:6px;height:6px;border-radius:50%;background:var(--green);
+  animation:pulse-dot 2s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;line-height:1.1;
+  letter-spacing:-.03em;margin-bottom:20px}
+.hero h1 .gradient{background:linear-gradient(135deg,var(--accent-light),var(--cyan),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-desc{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);
+  max-width:640px;line-height:1.8;margin-bottom:36px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+.stat{display:flex;flex-direction:column}
+.stat-value{font-size:2rem;font-weight:800;font-family:var(--mono);
+  background:linear-gradient(135deg,var(--accent-light),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;
+  letter-spacing:1px;font-weight:600}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;
+  border-radius:12px;font-size:.9rem;font-weight:600;
+  transition:all .3s;cursor:pointer;border:none;font-family:var(--font)}
+.btn-primary{background:var(--accent);color:#fff;
+  box-shadow:0 0 20px rgba(99,102,241,.3)}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);
+  box-shadow:0 0 30px rgba(99,102,241,.5);color:#fff}
+.btn-secondary{background:transparent;color:var(--text);
+  border:1px solid rgba(255,255,255,.15)}
+.btn-secondary:hover{border-color:var(--accent);background:var(--accent-glow);
+  transform:translateY(-2px);color:var(--text)}
+
+/* ===== SECTION HEADERS ===== */
+.section-label{display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.8rem;color:var(--accent-light);
+  font-weight:600;letter-spacing:1px;margin-bottom:12px}
+.section-label::before{content:'';width:24px;height:1px;background:var(--accent)}
+.section-title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;
+  letter-spacing:-.02em;margin-bottom:16px}
+.section-desc{color:var(--text-muted);max-width:600px;margin-bottom:48px}
+
+/* ===== SKILLS ===== */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+@media(max-width:400px){.skills-grid{grid-template-columns:1fr}}
+.skill-card{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px;transition:all .4s;position:relative;overflow:hidden}
+.skill-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  opacity:0;transition:opacity .4s}
+.skill-card:hover::before{opacity:1}
+.skill-icon{width:44px;height:44px;border-radius:12px;display:flex;
+  align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+.skill-card h3{font-size:1rem;font-weight:700;margin-bottom:12px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.skill-tag{padding:4px 12px;border-radius:100px;font-size:.75rem;font-weight:500;
+  background:rgba(255,255,255,.05);color:var(--text-muted);border:1px solid var(--border);
+  transition:all .2s}
+.skill-card:hover .skill-tag{border-color:rgba(99,102,241,.2);color:var(--text)}
+
+/* ===== EXPERIENCE ===== */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;
+  width:1px;background:linear-gradient(to bottom,var(--accent),var(--cyan),transparent)}
+.timeline-item{position:relative;margin-bottom:48px}
+.timeline-item::before{content:'';position:absolute;left:-36px;top:8px;
+  width:9px;height:9px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 12px var(--accent)}
+.timeline-header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:8px}
+.timeline-role{font-size:1.25rem;font-weight:700}
+.timeline-company{color:var(--accent-light);font-weight:600;font-size:1rem}
+.timeline-meta{display:flex;flex-wrap:wrap;gap:8px 16px;margin-bottom:16px;
+  font-size:.8rem;color:var(--text-dim)}
+.timeline-meta span{display:flex;align-items:center;gap:4px}
+.timeline-points{list-style:none;display:flex;flex-direction:column;gap:10px}
+.timeline-points li{color:var(--text-muted);font-size:.9rem;padding-left:20px;position:relative}
+.timeline-points li::before{content:'';position:absolute;left:0;top:10px;
+  width:6px;height:6px;border-radius:50%;background:rgba(99,102,241,.5)}
+
+/* ===== ACHIEVEMENTS ===== */
+.achievements-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.achievement-card{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;transition:all .3s}
+.achievement-card:hover{border-color:rgba(16,185,129,.3);transform:translateY(-3px)}
+.achievement-metric{font-size:1.75rem;font-weight:800;font-family:var(--mono);
+  margin-bottom:4px}
+.achievement-card:nth-child(1) .achievement-metric{color:var(--green)}
+.achievement-card:nth-child(2) .achievement-metric{color:var(--cyan)}
+.achievement-card:nth-child(3) .achievement-metric{color:var(--orange)}
+.achievement-card:nth-child(4) .achievement-metric{color:var(--pink)}
+.achievement-card:nth-child(5) .achievement-metric{color:var(--accent-light)}
+.achievement-desc{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+
+/* ===== EDUCATION ===== */
+.edu-card{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:32px;display:flex;gap:20px;align-items:start}
+.edu-icon{width:56px;height:56px;border-radius:14px;
+  background:linear-gradient(135deg,var(--accent-glow),rgba(6,182,212,.1));
+  border:1px solid rgba(99,102,241,.2);display:flex;align-items:center;
+  justify-content:center;font-size:1.5rem;flex-shrink:0}
+.edu-info h3{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+.edu-info p{color:var(--text-muted);font-size:.9rem}
+.edu-info .cert-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.cert-tag{padding:4px 12px;border-radius:100px;font-size:.75rem;
+  background:rgba(16,185,129,.1);color:var(--green);border:1px solid rgba(16,185,129,.2)}
+@media(max-width:480px){.edu-card{flex-direction:column}}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:40px}
+.contact-card{background:var(--card-bg);border:1px solid var(--border);
+  border-radius:var(--radius);padding:24px;text-align:center;transition:all .3s}
+.contact-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-3px)}
+.contact-icon{font-size:1.5rem;margin-bottom:8px}
+.contact-label{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;
+  letter-spacing:1px;font-weight:600;margin-bottom:4px}
+.contact-value{font-size:.9rem;font-weight:600;color:var(--text)}
+.contact-value a{color:var(--accent-light)}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:32px 0;text-align:center}
+footer p{color:var(--text-dim);font-size:.8rem}
+
+/* ===== ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ===== SCROLL PROGRESS ===== */
+.scroll-progress{position:fixed;top:64px;left:0;height:2px;z-index:99;
+  background:linear-gradient(90deg,var(--accent),var(--cyan),var(--green));
+  transition:width .1s}
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">NK.</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" onclick="closeNav()">About</a></li>
+      <li><a href="#skills" onclick="closeNav()">Skills</a></li>
+      <li><a href="#experience" onclick="closeNav()">Experience</a></li>
+      <li><a href="#achievements" onclick="closeNav()">Achievements</a></li>
+      <li><a href="#contact" onclick="closeNav()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="hero-label"><span class="dot"></span> Available for opportunities</div>
+      <h1>I build systems<br/>that <span class="gradient">scale.</span></h1>
+      <p class="hero-desc">Staff Software Engineer with 9+ years crafting high-performance, distributed systems. I turn complex problems into elegant, scalable architectures that power millions of users.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-value">9+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat"><span class="stat-value">50K+</span><span class="stat-label">RPM Handled</span></div>
+        <div class="stat"><span class="stat-value">99.99%</span><span class="stat-label">Uptime Achieved</span></div>
+        <div class="stat"><span class="stat-value">1M+</span><span class="stat-label">Users Served</span></div>
+      </div>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h8v8M4 12L12 4"/></svg>
+          Get In Touch
+        </a>
+        <a href="#experience" class="btn btn-secondary">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 2"/></svg>
+          View Experience
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label reveal">ABOUT ME</div>
+    <h2 class="section-title reveal">Engineering Leader &<br/>Full-Stack Architect</h2>
+    <p class="section-desc reveal">Based in Bengaluru, India. I specialize in leading high-performing engineering teams and delivering scalable, customer-facing applications. Deep expertise in Node.js, GraphQL, TypeScript, AWS, and microservices architecture with a proven track record of building low-latency, highly available systems.</p>
+    <p class="reveal" style="color:var(--text-muted);max-width:600px;margin-bottom:48px">Strong full-stack capabilities spanning React.js frontend development and Node.js backend engineering. Experienced in mentoring teams, establishing engineering best practices, and collaborating with cross-functional stakeholders to deliver business impact through robust technical solutions.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label reveal">TECH STACK</div>
+    <h2 class="section-title reveal">Tools I Work With</h2>
+    <p class="section-desc reveal">A comprehensive toolkit built over 9+ years of shipping production systems at scale.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon" style="background:rgba(99,102,241,.15);color:var(--accent-light)">&#9881;</div>
+        <h3>Backend & APIs</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span><span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">REST API</span><span class="skill-tag">Express.js</span>
+          <span class="skill-tag">Microservices</span><span class="skill-tag">TypeScript</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon" style="background:rgba(6,182,212,.15);color:var(--cyan)">&#9783;</div>
+        <h3>Frontend</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">React.js</span><span class="skill-tag">React Native</span>
+          <span class="skill-tag">TypeScript</span><span class="skill-tag">Redux</span>
+          <span class="skill-tag">JavaScript ES6+</span><span class="skill-tag">HTML5 / CSS3</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon" style="background:rgba(16,185,129,.15);color:var(--green)">&#9736;</div>
+        <h3>Databases</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Redis</span><span class="skill-tag">DynamoDB</span>
+          <span class="skill-tag">Aurora</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon" style="background:rgba(245,158,11,.15);color:var(--orange)">&#9729;</div>
+        <h3>Cloud & Infrastructure</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">AWS Lambda</span><span class="skill-tag">S3</span>
+          <span class="skill-tag">ECS</span><span class="skill-tag">RDS</span>
+          <span class="skill-tag">API Gateway</span><span class="skill-tag">IaC</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon" style="background:rgba(236,72,153,.15);color:var(--pink)">&#9881;</div>
+        <h3>DevOps & CI/CD</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">GitHub Actions</span><span class="skill-tag">Bitbucket Pipelines</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon" style="background:rgba(99,102,241,.15);color:var(--accent-light)">&#9888;</div>
+        <h3>Messaging & Monitoring</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Kafka</span><span class="skill-tag">RabbitMQ</span>
+          <span class="skill-tag">Sentry</span><span class="skill-tag">CloudWatch</span>
+          <span class="skill-tag">Alerting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label reveal">CAREER</div>
+    <h2 class="section-title reveal">Professional Experience</h2>
+    <p class="section-desc reveal">A journey of scaling systems, teams, and impact across fintech, SaaS, and enterprise domains.</p>
+
+    <div class="timeline">
+      <!-- JazzX -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Staff Software Engineer</span>
+          <span class="timeline-company">JazzX.ai</span>
+        </div>
+        <div class="timeline-meta">
+          <span>&#128197; Nov 2025 &ndash; Present</span>
+          <span>&#128205; Bengaluru, India</span>
+        </div>
+        <ul class="timeline-points">
+          <li>Leading technical vision and strategic roadmap for mortgage application platform, driving alignment between engineering, product, and business stakeholders</li>
+          <li>Managing end-to-end solution architecture for microservices infrastructure supporting mortgage processing workflows and regulatory compliance</li>
+          <li>Building and mentoring engineering teams while establishing best practices for code quality, system reliability, and operational excellence in fintech</li>
+          <li>Collaborating with C-level executives to define quarterly OKRs and ensure engineering deliverables align with business growth objectives</li>
+        </ul>
+      </div>
+
+      <!-- Infra.Market -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Lead Software Engineer</span>
+          <span class="timeline-company">Hella Infra Market</span>
+        </div>
+        <div class="timeline-meta">
+          <span>&#128197; Jan 2022 &ndash; Aug 2025</span>
+          <span>&#128205; Bengaluru, India</span>
+        </div>
+        <ul class="timeline-points">
+          <li>Built and led 7-member cross-functional team, mentoring 3 junior developers to senior roles</li>
+          <li>Led platform migration from ZUPER to in-house solution, reducing support workload by 75% and improving visibility for 20+ field agents</li>
+          <li>Established engineering standards achieving 99.99% uptime at 50K RPM, reducing API latency by 30%</li>
+          <li>Managed React Native white-label apps, cutting feature rollout time by 60%</li>
+          <li>Co-led B2B loyalty platform "Shalimar Experts" with projected growth from 15K to 1M+ MAU</li>
+        </ul>
+      </div>
+
+      <!-- Simpplr -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Senior Software Engineer</span>
+          <span class="timeline-company">Simpplr</span>
+        </div>
+        <div class="timeline-meta">
+          <span>&#128197; May 2021 &ndash; Nov 2021</span>
+          <span>&#128205; Gurugram, India</span>
+        </div>
+        <ul class="timeline-points">
+          <li>Architected fault-tolerant notification microservice using Node.js, Kafka, and SendGrid processing 5K messages/sec for 500K+ users</li>
+          <li>Reduced notification latency by 65% while maintaining 99.99% uptime</li>
+          <li>Designed distributed newsletter system delivering 2M+ emails monthly with 99.95% SLA</li>
+          <li>Aligned 15+ stakeholders and reduced sprint planning time by 40% through comprehensive technical documentation</li>
+        </ul>
+      </div>
+
+      <!-- Previous -->
+      <div class="timeline-item reveal">
+        <div class="timeline-header">
+          <span class="timeline-role">Software Engineer</span>
+          <span class="timeline-company">Various Companies</span>
+        </div>
+        <div class="timeline-meta">
+          <span>&#128197; 2016 &ndash; 2021</span>
+          <span>&#128205; Gurugram & Noida, India</span>
+        </div>
+        <ul class="timeline-points">
+          <li>Led UX architecture for UAE government portal, increasing user adoption by 40%</li>
+          <li>Designed automation engine serving 1M+ users, eliminating 12 manual workflows, saving $500K annually</li>
+          <li>Architected tax data pipeline ingesting 10M+ rows daily with 70% query optimization</li>
+          <li>Delivered enterprise solutions across e-commerce, healthcare, finance, and government sectors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-label reveal">IMPACT</div>
+    <h2 class="section-title reveal">Key Achievements</h2>
+    <p class="section-desc reveal">Measurable outcomes that demonstrate engineering excellence and business impact.</p>
+    <div class="achievements-grid">
+      <div class="achievement-card reveal">
+        <div class="achievement-metric">30-70%</div>
+        <p class="achievement-desc">API latency reduction through query optimization and caching strategies across multiple projects</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-1">
+        <div class="achievement-metric">$500K</div>
+        <p class="achievement-desc">Annual savings from automation engine eliminating 12 manual workflows</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-2">
+        <div class="achievement-metric">10K+</div>
+        <p class="achievement-desc">Concurrent users supported with 99.99% uptime in messaging infrastructure</p>
+      </div>
+      <div class="achievement-card reveal reveal-delay-3">
+        <div class="achievement-metric">0</div>
+        <p class="achievement-desc">Compliance defects in mission-critical tax systems with 100% requirement coverage</p>
+      </div>
+      <div class="achievement-card reveal">
+        <div class="achievement-metric">50K RPM</div>
+        <p class="achievement-desc">Production traffic handled with 99.99% system uptime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label reveal">EDUCATION</div>
+    <h2 class="section-title reveal">Background</h2>
+    <div class="edu-card reveal" style="margin-bottom:20px">
+      <div class="edu-icon">&#127891;</div>
+      <div class="edu-info">
+        <h3>Bachelor of Engineering in Computer Science</h3>
+        <p>Punjab University, India &bull; 2016</p>
+      </div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">&#128218;</div>
+      <div class="edu-info">
+        <h3>Certifications</h3>
+        <p>Professional certifications demonstrating continuous learning</p>
+        <div class="cert-tags">
+          <span class="cert-tag">Agile Methodology</span>
+          <span class="cert-tag">Domain-Driven Design</span>
+          <span class="cert-tag">Microservices Architecture</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal">GET IN TOUCH</div>
+    <h2 class="section-title reveal">Let's Build Something<br/><span style="background:linear-gradient(135deg,var(--accent-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Together.</span></h2>
+    <p class="section-desc reveal">I'm always open to discussing new opportunities, interesting projects, or just connecting with fellow engineers.</p>
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <div class="contact-icon">&#9993;</div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:nitesh.kumar07091993@gmail.com">nitesh.kumar07091993@gmail.com</a></div>
+      </div>
+      <div class="contact-card reveal reveal-delay-1">
+        <div class="contact-icon">&#128222;</div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:+917042512363">+91-7042512363</a></div>
+      </div>
+      <div class="contact-card reveal reveal-delay-2">
+        <div class="contact-icon">&#128101;</div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value"><a href="https://linkedin.com/in/nitesh-kumar-495810119" target="_blank" rel="noopener">nitesh-kumar</a></div>
+      </div>
+      <div class="contact-card reveal reveal-delay-3">
+        <div class="contact-icon">&#128205;</div>
+        <div class="contact-label">Location</div>
+        <div class="contact-value">Bengaluru, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Nitesh Kumar. Built with passion and clean code.</p>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('scrollProgress').style.width = (window.scrollY / h * 100) + '%';
+});
+
+// Navbar hide on scroll down
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const cur = window.scrollY;
+  document.getElementById('navbar').classList.toggle('hidden', cur > lastScroll && cur > 100);
+  lastScroll = cur;
+});
+
+// Active nav link
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY + 100;
+  sections.forEach(s => {
+    const link = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+    if (link) link.classList.toggle('active', y >= s.offsetTop && y < s.offsetTop + s.offsetHeight);
+  });
+});
+
+// Close mobile nav
+function closeNav() { document.getElementById('navLinks').classList.remove('open') }
+</script>
+
+</body>
+</html>
